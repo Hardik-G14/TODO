@@ -9,8 +9,8 @@ const Expense = (props) => {
 
     const enteredFilter = (selectedYear) => {
         setFilteredYear(selectedYear);
-        console.log(filteredYear);
     }
+
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onFilterChange={enteredFilter} />
