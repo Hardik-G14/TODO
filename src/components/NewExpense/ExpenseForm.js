@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-    // const [enterTitle, setEnterTitle] = useState("");
-    // const [enteredAmount, setEnteredAmount] = useState("");
-    // const [enteredDate, setEnteredDate] = useState("");
-    // console.log(userInput.enteredTitle);
-    // console.log(userInput.enteredAmount);
-    // console.log(userInput.enteredDate);
-
     const [userInput, setUserInput] = useState({
         enteredTitle: "",
         enteredAmount: "",
         enteredDate: ""
     });
+
+    const clickHandler = () => {
+        props.onParity();
+    }
 
     const titleChangeHandler = (event) => {
         setUserInput((prevState) => {
@@ -46,7 +43,7 @@ const ExpenseForm = (props) => {
         event.preventDefault();
         const expenseData = {
             title: userInput.enteredTitle,
-            amount: userInput.enteredDate,
+            amount: +userInput.enteredAmount,
             date: new Date(userInput.enteredDate)   //date contains date in gmt format
             // date: userInput.enteredDate  //date contains string now
         };
@@ -76,6 +73,7 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button onClick={clickHandler}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
